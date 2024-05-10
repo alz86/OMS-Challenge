@@ -8,6 +8,12 @@ const ImagePreview = (props) => {
   const handleShowAllClick =useCallback( () => setImages(images.map(m => ({...m, visible: true}))), [images]);
   const handleHideAllClick = useCallback( () => setImages(images.map(m => ({...m, visible: false}))), [images]);
 
+  const handleImageChanged = useCallback((id, visible) => {
+    var targetImage = images.find(m => m.id === id);
+    targetImage.visible = visible;
+    setImages([...images]);
+  }, [images]);
+
   return (
     <div className="layout align-items-center mt-100">
       <div className="card ma-20 pa-50">
@@ -18,7 +24,9 @@ const ImagePreview = (props) => {
           >
             {
               images.map(img => 
-                <ImageDisplayComponent key={img.id} src={img.src} visible={img.visible} id={img.id} alt={img.alt} />
+                <ImageDisplayComponent 
+                    key={img.id} src={img.src} visible={img.visible} id={img.id} alt={img.alt} 
+                    onImageChanged={newValue => handleImageChanged(img.id, newValue) }/>
               )
             }
             
