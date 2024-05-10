@@ -4,7 +4,6 @@ import ImageDisplayComponent from "./ImageDisplayComponent";
 const ImagePreview = (props) => {
 
   const [images, setImages] = React.useState([...props.images]);
-  
   const changeImageVisibility = (newVisibility) => setImages(images.map(m => ({...m, visible: newVisibility})));
   const handleShowAllClick = changeImageVisibility(true);
   const handleHideAllClick = changeImageVisibility(false);

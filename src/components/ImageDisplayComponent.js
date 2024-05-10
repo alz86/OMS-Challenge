@@ -2,7 +2,6 @@ import React from "react";
 import HiddenImageDiv from "./HiddenImageDiv";
 
 const ImageDisplayComponent = (props) => {
-    console.log('rendering image disp', {props});
     const [show, setShow] = React.useState(props.visible);
     
     return <>
