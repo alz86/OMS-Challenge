@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useCallback } from "react";
 import ImageDisplayComponent from "./ImageDisplayComponent";
 
 const ImagePreview = (props) => {
 
   const [images, setImages] = React.useState([...props.images]);
-  const changeImageVisibility = (newVisibility) => setImages(images.map(m => ({...m, visible: newVisibility})));
-  const handleShowAllClick = changeImageVisibility(true);
-  const handleHideAllClick = changeImageVisibility(false);
+  
+  const handleShowAllClick =useCallback( () => setImages(images.map(m => ({...m, visible: true}))), [images]);
+  const handleHideAllClick = useCallback( () => setImages(images.map(m => ({...m, visible: false}))), [images]);
 
   return (
     <div className="layout align-items-center mt-100">
